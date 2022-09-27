@@ -35,6 +35,7 @@ class BST {
         }
     }
 
+    // recursive function to insert a new node
     insertNode(node, newNode) {
         if (newNode.data < node.data) {
             if (node.left === null) {
@@ -66,18 +67,48 @@ class BST {
         }
         return current.data
     }
+
+    /*
+    Depth First Search includes - inOrder, preOrder & postOrder
+    */
+
+    /* 
+    inOrder traversal
+    An inorder traversal visits all of the nodes of a BST in ascending order of the node key values.
+    */
+    inOrder(node) {
+        if (node !== null) {
+            this.inOrder(node.left)
+            console.log(node.show() + " ")
+            this.inOrder(node.right)
+        }
+    }
+
+    preOrder(node) {
+        if (node !== null) {
+            console.log(node.show() + " ")
+            this.inOrder(node.left)
+            this.inOrder(node.right)
+        }
+    }
+
+    postOrder(node) {
+        if (node !== null) {
+            this.inOrder(node.left)
+            this.inOrder(node.right)
+            console.log(node.show() + " ")
+        }
+    }
 }
 
 const newBST = new BST()
-newBST.insert(9)
-newBST.insert(4)
-newBST.insert(12)
-newBST.insert(3)
-newBST.insert(19)
-newBST.insert(6)
-newBST.insert(5)
-newBST.insert(21)
-newBST.insert(8)
-newBST.insert(2)
-console.log(newBST.findMin())
-console.log(newBST.findMax())
+newBST.insert(23);
+newBST.insert(45);
+newBST.insert(16);
+newBST.insert(37);
+newBST.insert(3);
+newBST.insert(99);
+newBST.insert(22);
+//console.log(newBST.inOrder(newBST.root))
+//console.log(newBST.preOrder(newBST.root))
+console.log(newBST.postOrder(newBST.root))
